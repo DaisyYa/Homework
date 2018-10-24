@@ -1,5 +1,4 @@
 package it.sevenbits.homework;
-
 import java.util.Arrays;
 
 public class Main {
