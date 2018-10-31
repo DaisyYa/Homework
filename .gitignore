@@ -23,4 +23,5 @@ target/
 .idea/
 *.jar
 *.iml
-
+*.xml
+*.txt
