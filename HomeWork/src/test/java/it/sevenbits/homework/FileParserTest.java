@@ -5,7 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 
-import static junit.framework.TestCase.fail;
 
 public class FileParserTest {
     private FileParser fileParser;
@@ -17,29 +16,26 @@ public class FileParserTest {
     @Test
     public void fileParserOneWordTest(){
         String[] strArray = {"Hello"};
-        Assert.assertArrayEquals(strArray, fileParser.parse(" ", "test1.txt"));
+        Assert.assertArrayEquals(strArray, fileParser.parse(" ", "src/test/java/resources/test1.txt"));
     }
     @Test
-    public void fileParserFewWordTest(){
+    public void fileParserFewWordSimpleDelimiterTest(){
         String[] strArray = {"cats", "dogs", "mice", "etc"};
-        Assert.assertArrayEquals(strArray, fileParser.parse(", ", "test2.txt"));
+        Assert.assertArrayEquals(strArray, fileParser.parse(",", "src/test/java/resources/test2.txt"));
+    }
+    @Test(expected = NullPointerException.class)
+    public void fileParserNullTest(){
+
+        String[] strArray = fileParser.parse(", ", null);
+    }
+    @Test(expected = NullPointerException.class)
+    public void fileParserEmptyFileTest(){
+        String[] strArray = fileParser.parse(", ", "src/test/java/resources/test3.txt");
     }
     @Test
-    public void stringParserNullTest(){
-        try {
-            String[] strArray = fileParser.parse(", ", null);
-            fail();
-        } catch (NullPointerException e) {
-            Assert.assertNotEquals("", e.getMessage());
-        }
+    public void fileParserFewWordComplexDelimiterTest(){
+        String[] strArray = {"cats", "dogs", "mice", "parrots"};
+        Assert.assertArrayEquals(strArray, fileParser.parse(", ", "src/test/java/resources/test4.txt"));
     }
-    @Test
-    public void stringParserEmptyFileTest(){
-        try {
-            String[] strArray = fileParser.parse(", ", "test3.txt");
-            fail();
-        } catch (NullPointerException e) {
-            Assert.assertNotEquals("", e.getMessage());
-        }
-    }
+
 }

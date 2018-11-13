@@ -1,4 +1,6 @@
-package it.sevenbits.homework;
+package it.sevenbits;
+import it.sevenbits.homework.Parser;
+
 import java.util.Arrays;
 
 /**
@@ -15,5 +17,4 @@ public class Main {
         String[] astr = parser.parse(str1);
         System.out.println(Arrays.toString(astr));
     }
-
 }

@@ -4,7 +4,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static junit.framework.TestCase.fail;
 
 public class StringParserTest {
     private StringParser stringParser;
@@ -21,19 +20,21 @@ public class StringParserTest {
         Assert.assertArrayEquals(strArray, stringParser.parse(" ", str));
     }
     @Test
-    public void stringParserFewWordTest(){
-        String str ="cats, dogs, mice, etc";
-        String[] strArray = {"cats", "dogs", "mice", "etc"};
-        Assert.assertArrayEquals(strArray, stringParser.parse(", ", str));
+    public void stringParserFewWordSimpleDelimiterTest(){
+        String str ="cats,dogs,mice,parrots";
+        String[] strArray = {"cats", "dogs", "mice", "parrots"};
+        Assert.assertArrayEquals(strArray, stringParser.parse(",", str));
     }
     @Test
+    public void stringParserFewWordComplexDelimiterTest(){
+        String str ="cats, dogs, mice, parrots";
+        String[] strArray = {"cats", "dogs", "mice", "parrots"};
+        Assert.assertArrayEquals(strArray, stringParser.parse(", ", str));
+    }
+    @Test(expected = NullPointerException.class)
     public void stringParserNullTest(){
         String str = null;
-        try {
-            String[] strArray = stringParser.parse(", ", str);
-            fail();
-        } catch (NullPointerException e) {
-            Assert.assertNotEquals("", e.getMessage());
-        }
+        String[] strArray = stringParser.parse(", ", str);
+
     }
 }
