@@ -24,8 +24,7 @@ public class FileParserTest {
         Assert.assertArrayEquals(strArray, fileParser.parse(",", "src/test/java/resources/test2.txt"));
     }
     @Test(expected = NullPointerException.class)
-    public void fileParserNullTest(){
-
+    public void fileParserNullTest() {
         String[] strArray = fileParser.parse(", ", null);
     }
     @Test(expected = NullPointerException.class)

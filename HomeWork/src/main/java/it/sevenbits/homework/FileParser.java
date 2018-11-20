@@ -19,38 +19,20 @@ public class FileParser implements IParser {
      * @return array of strings
      */
     public String[] parse(final String delimiter, final String sourse) {
-        String str = null;
-        ArrayList<String> arrayList = new ArrayList<String>();
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(new File(sourse)))) {
-            str = bufferedReader.readLine().trim().replaceAll(" +", " ");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e1) {
-            e1.printStackTrace();
-        }
-        int q = 0;
-        int delN = 0;
-        if (delimiter.length() == 1) {
-            for (int i = 0; i < str.length(); i++) {
-                if (str.charAt(i) == delimiter.charAt(0)) {
-                    arrayList.add(str.substring(q, i));
-                    q = i + 1;
-                }
-            }
+        if (sourse == null || delimiter == null) {
+            throw new NullPointerException();
         } else {
-            for (int i = 0; i < str.length(); i++) {
-                if (delimiter.contains(String.valueOf(str.charAt(i)))) {
-                    delN++;
-                    if (delN == delimiter.length()) {
-                        arrayList.add(str.substring(q, i - delimiter.length() + 1));
-                        q = i + 1;
-                        delN = 0;
-                    }
+            StringBuilder stringBuilder = new StringBuilder();
+            int symbol;
+            try (BufferedReader bufferedReader = new BufferedReader(new FileReader(new File(sourse)))) {
+                while ((symbol = bufferedReader.read()) != -1) {
+                    stringBuilder.append((char) symbol);
                 }
+            } catch (IOException e) {
+                System.out.println("Error! File not found");
             }
+            StringParser stringParser = new StringParser();
+            return stringParser.parse(delimiter, stringBuilder.toString());
         }
-        arrayList.add(str.substring(q));
-
-        return arrayList.toArray(new String[arrayList.size()]);
     }
 }

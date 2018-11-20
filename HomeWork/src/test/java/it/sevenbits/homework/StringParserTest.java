@@ -27,9 +27,9 @@ public class StringParserTest {
     }
     @Test
     public void stringParserFewWordComplexDelimiterTest(){
-        String str ="cats, dogs, mice, parrots";
+        String str = "cats,,dogs,,mice,,parrots";
         String[] strArray = {"cats", "dogs", "mice", "parrots"};
-        Assert.assertArrayEquals(strArray, stringParser.parse(", ", str));
+        Assert.assertArrayEquals(strArray, stringParser.parse(",,", str));
     }
     @Test(expected = NullPointerException.class)
     public void stringParserNullTest(){
