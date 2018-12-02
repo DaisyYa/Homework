@@ -1,5 +1,5 @@
 package it.sevenbits;
-import it.sevenbits.homework.Parser;
+import it.sevenbits.homework.Parser.Parser;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package it.sevenbits.homework;
+package it.sevenbits.homework.Parser;
 
 /**
  * Interface with parse method

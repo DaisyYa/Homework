@@ -1,5 +1,6 @@
-package it.sevenbits.homework;
+package it.sevenbits.homework.Parser;
 
+import it.sevenbits.homework.Parser.StringParser;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

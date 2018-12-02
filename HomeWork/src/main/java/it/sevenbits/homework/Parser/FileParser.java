@@ -1,12 +1,10 @@
-package it.sevenbits.homework;
+package it.sevenbits.homework.Parser;
 
 
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.ArrayList;
 
 /**
  *  class with parse method(for file)
