@@ -32,15 +32,16 @@ public class OneWordGrep implements IGrep {
         } else {
             while (c != -1) {
                 if ((char) c == '\n') {
-                    if (line.toString().contains(filter)) {
+                    if (line.toString().toLowerCase().contains(filter.toLowerCase())) {
                         stringArrayList.add(line.toString());
+                        line = new StringBuilder();
                     }
                 } else {
                     line.append((char) c);
                 }
                 c = reader.read();
             }
-            if (line.toString().contains(filter)) {
+            if (line.toString().toLowerCase().contains(filter.toLowerCase())) {
                 stringArrayList.add(line.toString());
             }
         }

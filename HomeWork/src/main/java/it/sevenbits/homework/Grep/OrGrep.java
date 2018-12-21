@@ -33,19 +33,20 @@ public class OrGrep implements IGrep {
             while (c != -1) {
                 if ((char) c == '\n') {
                     for (String str : filter) {
-                        if (line.toString().contains(str)) {
+                        if (line.toString().toLowerCase().contains(str.toLowerCase())) {
                             stringArrayList.add(line.toString());
-                            line = new StringBuilder();
+
                             break;
                         }
                     }
+                    line = new StringBuilder();
                 } else {
                     line.append((char) c);
                 }
                 c = reader.read();
             }
             for (String str : filter) {
-                if (line.toString().contains(str)) {
+                if (line.toString().toLowerCase().contains(str.toLowerCase())) {
                     stringArrayList.add(line.toString());
                     break;
                 }

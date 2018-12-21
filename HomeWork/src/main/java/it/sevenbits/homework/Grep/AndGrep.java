@@ -32,22 +32,22 @@ public class AndGrep implements IGrep {
         while (c != -1) {
             if ((char) c == '\n') {
                 for (String str : filter) {
-                    if (line.toString().contains(str)) {
+                    if (line.toString().toLowerCase().contains(str.toLowerCase())) {
                         count++;
                     }
                 }
                 if (count == filter.length) {
                     stringArrayList.add(line.toString());
-                    line = new StringBuilder();
                     count = 0;
                 }
+                line = new StringBuilder();
             } else {
                 line.append((char) c);
             }
             c = reader.read();
         }
         for (String str : filter) {
-            if (line.toString().contains(str)) {
+            if (line.toString().toLowerCase().contains(str.toLowerCase())) {
                 count++;
             }
         }

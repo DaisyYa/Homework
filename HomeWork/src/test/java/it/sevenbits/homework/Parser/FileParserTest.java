@@ -16,7 +16,7 @@ public class FileParserTest {
     }
     @Test
     public void fileParserOneWordTest(){
-        String[] strArray = {"Hello"};
+        String[] strArray = {"Hello", "d"};
         Assert.assertArrayEquals(strArray, fileParser.parse(" ", "src/test/java/resources/test1.txt"));
     }
     @Test
